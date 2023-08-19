@@ -11,12 +11,30 @@ https://leetcode.cn/problems/number-of-1-bits/
 在 Java 中，编译器使用 二进制补码 记法来表示有符号整数。因此，在上面的 示例 3 中，输入表示有符号整数 -3。
 */
 
+
+
 #include <iostream>
 
 /*
     思路：& ：都是一，才为一的特性：可以用于按位判断指定数值的二进制表示下的每位是否为：1
 */
 
+// 方法二：位运算的高效用法（执行次数却决于 1 的个数！）
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int cnt = 0;
+        while(n){
+            n &= n -1;
+            cnt++;
+        }
+        return cnt;
+    }
+};
+
+
+
+// 方法一：位运算的基本用法（本质还是在遍历：效率偏低）
 class Solution {
 public:
     int hammingWeight(uint32_t n) {
